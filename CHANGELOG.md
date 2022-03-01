@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 2.0.1 - 2022-03-01
+
+FIX sanitizeUrl method
+
 ## 2.0.0 - 2022-02-15
 
 - add laravel 9 support
