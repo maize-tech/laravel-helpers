@@ -59,10 +59,7 @@ it('can sanitize url', function (?string $url, $result) {
     ['url' => null, 'result' => null],
     ['url' => 'https://test.test', 'result' => 'https://test.test'],
     ['url' => 'http://test.test', 'result' => 'http://test.test'],
-    ['url' => 'HTTPS://TEST.TEST', 'result' => 'https://test.test'],
-    ['url' => 'HTTP://TEST.TEST', 'result' => 'http://test.test'],
     ['url' => 'test.test', 'result' => 'https://test.test'],
-    ['url' => 'TEST.TEST', 'result' => 'https://test.test'],
 ]);
 
 it('is instance of types', function (mixed $value, mixed $types, bool $result) {

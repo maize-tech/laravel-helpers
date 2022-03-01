@@ -33,8 +33,6 @@ class Helper
             return $url;
         }
 
-        $url = Str::lower($url);
-
         if (! Str::startsWith($url, ['http://', 'https://'])) {
             return "https://{$url}";
         }
