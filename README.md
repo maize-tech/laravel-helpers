@@ -117,7 +117,7 @@ hlp()->anonymizeFilename($filename);
 
 ### `sanitizeUrl`
 
-The `sanitizeUrl` function returns the lower case of the given url and prefixes it with the `https` protocol if none is set.
+The `sanitizeUrl` function prepends the specified url with the `https` protocol if none is set.
 
 ```php
 hlp()->sanitizeUrl('http://innovation.h-farm.com'); // returns 'http://innovation.h-farm.com'
