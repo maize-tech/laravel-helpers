@@ -5,9 +5,12 @@ namespace Maize\Helpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Macroable;
 
 class Helper
 {
+    use Macroable;
+
     public static function paginationLimit(int $default = 16, int $max = 48): int
     {
         $limit = request()->get('limit') ?? $default;

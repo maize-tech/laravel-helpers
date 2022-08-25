@@ -101,3 +101,9 @@ it('can get model key name', function (mixed $model, string $result) {
     ['model' => Article::class, 'result' => 'id'],
     ['model' => new Article(), 'result' => 'id'],
 ]);
+
+it('is macroable', function () {
+    hlp()->macro('foo', fn () => 'macroable');
+
+    expect(hlp()->foo())->toBe('macroable');
+});
