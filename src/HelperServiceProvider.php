@@ -13,4 +13,9 @@ class HelperServiceProvider extends PackageServiceProvider
             ->name('laravel-helpers')
             ->hasConfigFile();
     }
+
+    public function packageRegistered()
+    {
+        Helper::register();
+    }
 }
