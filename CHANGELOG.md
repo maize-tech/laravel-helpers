@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 3.0.0 - 2022-08-29
+
+### What's Changed
+
+- Moved helper methods to invokable classes in order to improve maintenance
+- Added `isUrl` helper method
+- Updated documentation
+
 ## 2.0.1 - 2022-03-01
 
 FIX sanitizeUrl method
