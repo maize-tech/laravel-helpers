@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 3.1.0 - 2022-08-29
+
+### What's Changed
+
+- Added `HelperMacro` interface for better code consistency
+
 ## 3.0.0 - 2022-08-29
 
 ### What's Changed
