@@ -2,7 +2,9 @@
 
 namespace Maize\Helpers\Macros;
 
-class PaginationLimit
+use Maize\Helpers\HelperMacro;
+
+class PaginationLimit implements HelperMacro
 {
     public function __invoke(): \Closure
     {

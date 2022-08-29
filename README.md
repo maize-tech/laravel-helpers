@@ -232,14 +232,16 @@ hlp()->sanitizeUrl('') // returns an empty string
 
 If needed, you can easily add your own helper methods.
 
-All you have to do is define your custom helper method using an invokable class:
+All you have to do is define your custom helper class and implement the `HelperMacro` interface:
 
 ```php
 <?php
 
 namespace App\Helpers\Macros;
 
-class Ping
+use Maize\Helpers\HelperMacro;
+
+class Ping implements HelperMacro
 {
     public function __invoke(): \Closure
     {

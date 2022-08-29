@@ -3,8 +3,9 @@
 namespace Maize\Helpers\Macros;
 
 use Illuminate\Support\Str;
+use Maize\Helpers\HelperMacro;
 
-class AnonymizeFilename
+class AnonymizeFilename implements HelperMacro
 {
     public function __invoke(): \Closure
     {

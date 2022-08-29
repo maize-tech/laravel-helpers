@@ -3,8 +3,9 @@
 namespace Maize\Helpers\Macros;
 
 use Illuminate\Database\Eloquent\Model;
+use Maize\Helpers\HelperMacro;
 
-class MorphClassOf
+class MorphClassOf implements HelperMacro
 {
     public function __invoke(): \Closure
     {

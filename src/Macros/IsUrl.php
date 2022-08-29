@@ -2,7 +2,9 @@
 
 namespace Maize\Helpers\Macros;
 
-class IsUrl
+use Maize\Helpers\HelperMacro;
+
+class IsUrl implements HelperMacro
 {
     public function __invoke(): \Closure
     {

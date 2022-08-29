@@ -2,7 +2,9 @@
 
 namespace Maize\Helpers\Macros;
 
-class ClassUsesTrait
+use Maize\Helpers\HelperMacro;
+
+class ClassUsesTrait implements HelperMacro
 {
     public function __invoke(): \Closure
     {

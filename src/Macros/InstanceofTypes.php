@@ -3,8 +3,9 @@
 namespace Maize\Helpers\Macros;
 
 use Illuminate\Support\Arr;
+use Maize\Helpers\HelperMacro;
 
-class InstanceofTypes
+class InstanceofTypes implements HelperMacro
 {
     public function __invoke(): \Closure
     {

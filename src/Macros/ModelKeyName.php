@@ -3,8 +3,9 @@
 namespace Maize\Helpers\Macros;
 
 use Illuminate\Database\Eloquent\Model;
+use Maize\Helpers\HelperMacro;
 
-class ModelKeyName
+class ModelKeyName implements HelperMacro
 {
     public function __invoke(): \Closure
     {
