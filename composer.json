@@ -1,10 +1,10 @@
 {
     "name": "maize-tech/laravel-helpers",
-    "description": "This is my package laravel-helpers",
+    "description": "Laravel Helpers",
     "keywords": [
         "maize-tech",
         "laravel",
-        "laravel-helpers"
+        "helpers"
     ],
     "homepage": "https://github.com/maize-tech/laravel-helpers",
     "license": "MIT",
