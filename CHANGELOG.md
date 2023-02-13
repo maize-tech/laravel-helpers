@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 4.0.0 - 2023-02-13
+
+### What's Changed
+
+- Add support to Laravel 10.x
+- Drop support to older Laravel versions (8.x)
+
 ## 3.1.0 - 2022-08-29
 
 ### What's Changed
