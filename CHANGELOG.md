@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 4.1.0 - 2023-02-21
+
+### What's Changed
+
+- Added [pipe](https://github.com/maize-tech/laravel-helpers#pipe) helper method
+- Added [sanitizeArrayOfStrings](https://github.com/maize-tech/laravel-helpers#sanitizearrayofstrings) helper method
+- Added [sanitizeString](https://github.com/maize-tech/laravel-helpers#sanitizestring) helper method
+- Updated config file to allow new helper methods to be loaded automatically on new releases
+
 ## 4.0.0 - 2023-02-13
 
 ### What's Changed
