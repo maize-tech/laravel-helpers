@@ -1,5 +1,7 @@
 <?php
 
+use Maize\Helpers\Helper;
+
 return [
 
     /*
@@ -14,15 +16,8 @@ return [
     |
     */
 
-    'macros' => [
-        'anonymizeFilename' => \Maize\Helpers\Macros\AnonymizeFilename::class,
-        'classUsesTrait' => \Maize\Helpers\Macros\ClassUsesTrait::class,
-        'instanceofTypes' => \Maize\Helpers\Macros\InstanceofTypes::class,
-        'isUrl' => \Maize\Helpers\Macros\IsUrl::class,
-        'modelKeyName' => \Maize\Helpers\Macros\ModelKeyName::class,
-        'morphClassOf' => \Maize\Helpers\Macros\MorphClassOf::class,
-        'paginationLimit' => \Maize\Helpers\Macros\PaginationLimit::class,
-        'sanitizeUrl' => \Maize\Helpers\Macros\SanitizeUrl::class,
-    ],
+    'macros' => Helper::defaultMacros()->merge([
+        // 'methodName' => App\Example\ExampleClass::class,
+    ])->toArray(),
 
 ];

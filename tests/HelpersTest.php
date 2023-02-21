@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
-use Maize\Helpers\Tests\Models\Article;
+use Maize\Helpers\Tests\Support\Models\Article;
 
 use function PHPUnit\Framework\assertNotEquals;
 
@@ -100,6 +100,66 @@ it('paginationLimit', function (?int $limit, ?int $default, ?int $max, int $resu
     ['limit' => null, 'default' => 8, 'max' => null, 'result' => 8],
     ['limit' => 500, 'default' => 16, 'max' => 200, 'result' => 200],
 
+]);
+
+it('pipe', function ($passable, $pipes, $result) {
+    expect(hlp()->pipe($passable, $pipes))->toBe($result);
+})->with([
+    ['passable' => null, 'pipes' => [], 'result' => null],
+    ['passable' => [], 'pipes' => [], 'result' => []],
+    ['passable' => '', 'pipes' => [], 'result' => ''],
+    ['passable' => 'test', 'pipes' => [], 'result' => 'test'],
+    ['passable' => 'test', 'pipes' => [
+        \Maize\Helpers\Tests\Support\Actions\Uppercase::class,
+        \Maize\Helpers\Tests\Support\Actions\Reverse::class,
+    ], 'result' => 'TSET'],
+    ['passable' => 'test', 'pipes' => [
+        \Maize\Helpers\Tests\Support\Actions\Reverse::class,
+        \Maize\Helpers\Tests\Support\Actions\Uppercase::class,
+    ], 'result' => 'TSET'],
+    ['passable' => 'test', 'pipes' => [
+        \Maize\Helpers\Tests\Support\Actions\Uppercase::class,
+    ], 'result' => 'TEST'],
+    ['passable' => 'test', 'pipes' => [
+        \Maize\Helpers\Tests\Support\Actions\Reverse::class,
+    ], 'result' => 'tset'],
+]);
+
+it('sanitizeString', function (?string $string, $result) {
+    expect(hlp()->sanitizeString($string))->toBe($result);
+})->with([
+    ['string' => null, 'result' => null],
+    ['string' => '', 'result' => ''],
+    ['string' => '   test   ', 'result' => 'test'],
+    ['string' => '<h1>   test   </h1>', 'result' => 'test'],
+    ['string' => '   <h1>   test   </h1>   ', 'result' => 'test'],
+    ['string' => '   test   </h1>   ', 'result' => 'test'],
+    ['string' => '   <h1>   test   ', 'result' => 'test'],
+    ['string' => 'test<br>', 'result' => 'test'],
+    ['string' => 'test<br />', 'result' => 'test'],
+    ['string' => '<h1></h1>', 'result' => ''],
+    ['string' => '<br />', 'result' => ''],
+]);
+
+it('sanitizeArrayOfStrings', function (?array $array, $result) {
+    expect(hlp()->sanitizeArrayOfStrings($array))->toBe($result);
+})->with([
+    ['array' => null, 'result' => null],
+    ['array' => [], 'result' => []],
+    ['array' => [null], 'result' => []],
+    ['array' => ['a' => ''], 'result' => []],
+    ['array' => ['a' => null], 'result' => []],
+    ['array' => ['   test   ', '   test   '], 'result' => ['test', 'test']],
+    ['array' => ['a' => '   test   ', 'b' => '   test   '],'result' => ['a' => 'test', 'b' => 'test']],
+    ['array' => ['a' => '<h1>   test   </h1>', 'b' => '<h1>   test   </h1>'],'result' => ['a' => 'test', 'b' => 'test']],
+    ['array' => ['a' => '   <h1>   test   </h1>   ', 'b' => '   <h1>   test   </h1>   '],'result' => ['a' => 'test', 'b' => 'test']],
+    ['array' => ['a' => '   test   </h1>   ', 'b' => '   test   </h1>   '],'result' => ['a' => 'test', 'b' => 'test']],
+    ['array' => ['   test   </h1>   ', '   test   </h1>   '], 'result' => ['test', 'test']],
+    ['array' => ['   <h1>   test   ', '   <h1>   test   '], 'result' => ['test', 'test']],
+    ['array' => ['test<br>', 'test<br>'], 'result' => ['test', 'test']],
+    ['array' => ['test<br />', 'test<br />'], 'result' => ['test', 'test']],
+    ['array' => ['<h1></h1>', '<h1></h1>'], 'result' => []],
+    ['array' => ['<br />', '<br />'], 'result' => []],
 ]);
 
 it('sanitizeUrl', function (?string $url, $result) {

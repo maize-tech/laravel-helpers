@@ -1,6 +1,6 @@
 <?php
 
-namespace Maize\Helpers\Tests;
+namespace Maize\Helpers\Tests\Support;
 
 use Maize\Helpers\HelperServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -17,10 +17,5 @@ class TestCase extends Orchestra
         return [
             HelperServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        //
     }
 }

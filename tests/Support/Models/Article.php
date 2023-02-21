@@ -1,6 +1,6 @@
 <?php
 
-namespace Maize\Helpers\Tests\Models;
+namespace Maize\Helpers\Tests\Support\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
