@@ -1,8 +1,8 @@
 # Laravel Helpers
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/maize-tech/laravel-helpers.svg?style=flat-square)](https://packagist.org/packages/maize-tech/laravel-helpers)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/maize-tech/laravel-helpers/run-tests?label=tests)](https://github.com/maize-tech/laravel-helpers/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/maize-tech/laravel-helpers/Check%20&%20fix%20styling?label=code%20style)](https://github.com/maize-tech/laravel-helpers/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/maize-tech/laravel-helpers/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/maize-tech/laravel-helpers/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/maize-tech/laravel-helpers/php-cs-fixer.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/maize-tech/laravel-helpers/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/maize-tech/laravel-helpers.svg?style=flat-square)](https://packagist.org/packages/maize-tech/laravel-helpers)
 
 This repository contains some useful helpers for most applications using Laravel.
@@ -37,16 +37,9 @@ return [
     |
     */
 
-    'macros' => [
-        'anonymizeFilename' => \Maize\Helpers\Macros\AnonymizeFilename::class,
-        'classUsesTrait' => \Maize\Helpers\Macros\ClassUsesTrait::class,
-        'instanceofTypes' => \Maize\Helpers\Macros\InstanceofTypes::class,
-        'isUrl' => \Maize\Helpers\Macros\IsUrl::class,
-        'modelKeyName' => \Maize\Helpers\Macros\ModelKeyName::class,
-        'morphClassOf' => \Maize\Helpers\Macros\MorphClassOf::class,
-        'paginationLimit' => \Maize\Helpers\Macros\PaginationLimit::class,
-        'sanitizeUrl' => \Maize\Helpers\Macros\SanitizeUrl::class,
-    ],
+    'macros' => Helper::defaultMacros()->merge([
+        // 'methodName' => App\Example\ExampleClass::class,
+    ])->toArray(),
 
 ];
 ```
@@ -72,6 +65,9 @@ hlp()->sanitizeUrl('mywebsite.com'); // using  the helper function
 - [`modelKeyName`](#modelkeyname)
 - [`morphClassOf`](#morphclassof)
 - [`paginationLimit`](#paginationlimit)
+- [`pipe`](#pipe)
+- [`sanitizeArrayOfStrings`](#sanitizearrayofstrings)
+- [`sanitizeString`](#sanitizestring)
 - [`sanitizeUrl`](#sanitizeurl)
 
 ### `anonymizeFilename`
@@ -216,6 +212,49 @@ Article::paginate(
 );
 ```
 
+### `pipe`
+
+The `pipe` function allows you to integrate Laravel pipelines with ease.
+The first parameter is the object to be sent through the pipeline, while the second is the list of pipes.
+
+```php
+hlp()->pipe('test', [
+    \Maize\Helpers\Tests\Support\Actions\Uppercase::class,
+]); // returns 'TEST'
+
+hlp()->pipe('test', [
+    \Maize\Helpers\Tests\Support\Actions\Uppercase::class,
+    \Maize\Helpers\Tests\Support\Actions\Reverse::class,
+]); // returns 'TSET'
+
+hlp()->pipe('', []) // returns an empty string
+```
+
+### `sanitizeArrayOfStrings`
+
+The `sanitizeArrayOfStrings` function sanitizes an array of strings by removing all HTML tags and whitespace from both ends.
+When passing an associative array, it also filters all keys with an empty value.
+
+```php
+hlp()->sanitizeArrayOfStrings(['   test   ', '   test   ']); // returns '['test', 'test']'
+
+hlp()->sanitizeArrayOfStrings(['a' => '   test   </h1>   ', 'b' => '   test   </h1>   ']) // returns ['a' => 'test', 'b' => 'test']
+
+hlp()->sanitizeArrayOfStrings(['a' => '']); // returns an empty array
+```
+
+### `sanitizeString`
+
+The `sanitizeString` function sanitizes a string by removing all HTML tags and whitespace from both ends.
+
+```php
+hlp()->sanitizeString('<h1>   test   </h1>'); // returns 'test'
+
+hlp()->sanitizeString('   <h1>   test   '); // returns 'test'
+
+hlp()->sanitizeString('<br />') // returns an empty string
+```
+
 ### `sanitizeUrl`
 
 The `sanitizeUrl` function prepends the specified url with the `https` protocol if none is set.
@@ -269,17 +308,9 @@ return [
     |
     */
 
-    'macros' => [
-        'anonymizeFilename' => \Maize\Helpers\Macros\AnonymizeFilename::class,
-        'classUsesTrait' => \Maize\Helpers\Macros\ClassUsesTrait::class,
-        'instanceofTypes' => \Maize\Helpers\Macros\InstanceofTypes::class,
-        'isUrl' => \Maize\Helpers\Macros\IsUrl::class,
-        'modelKeyName' => \Maize\Helpers\Macros\ModelKeyName::class,
-        'morphClassOf' => \Maize\Helpers\Macros\MorphClassOf::class,
-        'paginationLimit' => \Maize\Helpers\Macros\PaginationLimit::class,
-        'sanitizeUrl' => \Maize\Helpers\Macros\SanitizeUrl::class,
+    'macros' => Helper::defaultMacros()->merge([
         'ping' => \App\Helpers\Macros\Ping::class,
-    ],
+    ])->toArray(),
 
 ];
 ```

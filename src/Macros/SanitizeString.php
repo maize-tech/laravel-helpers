@@ -15,7 +15,7 @@ class SanitizeString implements HelperMacro
             }
 
             return Str::of($value)
-                ->pipe('strip_tags')
+                ->stripTags()
                 ->trim()
                 ->toString();
         };

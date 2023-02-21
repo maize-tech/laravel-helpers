@@ -6,6 +6,19 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 use Maize\Helpers\Support\Config;
 
+/**
+ * @method string anonymizeFilename(string $filename)
+ * @method bool classUsesTrait(string $trait, mixed $class)
+ * @method bool instanceofTypes(mixed $value, array|string|object $types)
+ * @method bool isUrl(mixed $url)
+ * @method string modelKeyName(\Illuminate\Database\Eloquent\Model|string $model)
+ * @method string morphClassOf(\Illuminate\Database\Eloquent\Model|string $model)
+ * @method int paginationLimit(int $default = 16, int $max = 48)
+ * @method mixed pipe(mixed $passable, mixed $pipes)
+ * @method array|null sanitizeArrayOfStrings(array|null $value, array|string|null $only = null)
+ * @method string|null sanitizeString(string|null $value)
+ * @method string|null sanitizeUrl(string|null $url)
+ */
 class Helper
 {
     use Macroable;

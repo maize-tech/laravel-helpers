@@ -9,10 +9,7 @@ class Pipe implements HelperMacro
 {
     public function __invoke(): \Closure
     {
-        return function (
-            mixed $passable,
-            mixed $pipes
-        ): mixed {
+        return function (mixed $passable, mixed $pipes): mixed {
             return app(Pipeline::class)
                 ->send($passable)
                 ->through($pipes)
