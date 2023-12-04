@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 4.2.0 - 2023-12-04
+
+### What's Changed
+
+- Added [resolveMorphedModel](https://github.com/maize-tech/laravel-helpers#resolvemorphedmodel) helper method
+
 ## 4.1.0 - 2023-02-21
 
 ### What's Changed
