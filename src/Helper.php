@@ -13,6 +13,7 @@ use Maize\Helpers\Support\Config;
  * @method bool isUrl(mixed $url)
  * @method string modelKeyName(\Illuminate\Database\Eloquent\Model|string $model)
  * @method string morphClassOf(\Illuminate\Database\Eloquent\Model|string $model)
+ * @method string resolveMorphedModel(string $alias)
  * @method int paginationLimit(int $default = 16, int $max = 48)
  * @method mixed pipe(mixed $passable, mixed $pipes)
  * @method array|null sanitizeArrayOfStrings(array|null $value, array|string|null $only = null)
@@ -39,6 +40,7 @@ class Helper
             'isUrl' => \Maize\Helpers\Macros\IsUrl::class,
             'modelKeyName' => \Maize\Helpers\Macros\ModelKeyName::class,
             'morphClassOf' => \Maize\Helpers\Macros\MorphClassOf::class,
+            'resolveMorphedModel' => \Maize\Helpers\Macros\ResolveMorphedModel::class,
             'paginationLimit' => \Maize\Helpers\Macros\PaginationLimit::class,
             'pipe' => \Maize\Helpers\Macros\Pipe::class,
             'sanitizeArrayOfStrings' => \Maize\Helpers\Macros\SanitizeArrayOfStrings::class,

@@ -64,6 +64,7 @@ hlp()->sanitizeUrl('mywebsite.com'); // using  the helper function
 - [`isUrl`](#isurl)
 - [`modelKeyName`](#modelkeyname)
 - [`morphClassOf`](#morphclassof)
+- [`resolveMorphedModel`](#resolvemorphedmodel)
 - [`paginationLimit`](#paginationlimit)
 - [`pipe`](#pipe)
 - [`sanitizeArrayOfStrings`](#sanitizearrayofstrings)
@@ -168,6 +169,18 @@ Relation::enforceMorphMap([
 hlp()->morphClassOf($model); // returns 'user'
 
 hlp()->morphClassOf(User::class); // returns 'user'
+```
+
+### `resolveMorphedModel`
+
+The `resolveMorphedModel` function returns the fully qualified model class name of a given morph class name.
+
+You can either pass the singular or plural name of the morph class name.
+
+```php
+hlp()->resolveMorphedModel('users'); // returns 'App\Models\User'
+
+hlp()->resolveMorphedModel('user'); // returns 'App\Models\User'
 ```
 
 ### `paginationLimit`

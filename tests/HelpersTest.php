@@ -2,10 +2,16 @@
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Auth\User;
 use Maize\Helpers\Tests\Support\Models\Article;
+use Maize\Helpers\Tests\Support\Models\Post;
 
 use function PHPUnit\Framework\assertNotEquals;
+
+beforeEach(function () {
+    Relation::morphMap(['article' => Article::class]);
+});
 
 it('anonymizeFilename', function (?string $name, ?string $ext) {
     $filename = "{$name}{$ext}";
@@ -70,8 +76,16 @@ it('modelKeyName', function (mixed $model, string $result) {
 it('morphClassOf', function (mixed $model, string $result) {
     expect(hlp()->morphClassOf($model))->toBe($result);
 })->with([
-    ['model' => Article::class, 'result' => Article::class],
-    ['model' => new Article(), 'result' => Article::class],
+    ['model' => Article::class, 'result' => 'article'],
+    ['model' => new Article(), 'result' => 'article'],
+]);
+
+it('resolveMorphedModel', function (mixed $model, ?string $result) {
+    expect(hlp()->resolveMorphedModel($model))->toBe($result);
+})->with([
+    ['model' => 'article', 'result' => Article::class],
+    ['model' => 'articles', 'result' => Article::class],
+    ['model' => Post::class, 'result' => Post::class],
 ]);
 
 it('paginationLimit', function (?int $limit, ?int $default, ?int $max, int $result) {
