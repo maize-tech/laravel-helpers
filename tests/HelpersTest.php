@@ -7,8 +7,6 @@ use Illuminate\Foundation\Auth\User;
 use Maize\Helpers\Tests\Support\Models\Article;
 use Maize\Helpers\Tests\Support\Models\Post;
 
-use function PHPUnit\Framework\assertNotEquals;
-
 beforeEach(function () {
     Relation::morphMap(['article' => Article::class]);
 });
@@ -24,7 +22,7 @@ it('anonymizeFilename', function (?string $name, ?string $ext) {
     }
 
     $expect->toEndWith($ext);
-    assertNotEquals($expect, $filename);
+    $this->assertNotEquals($expect, $filename);
 })->with([
     ['filename' => '', 'ext' => ''],
     ['name' => 'test', 'ext' => '.zip'],
