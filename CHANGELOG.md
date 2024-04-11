@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 4.3.1 - 2024-04-11
+
+### What's Changed
+
+* FIX min php version by @enricodelazzari in https://github.com/maize-tech/laravel-helpers/pull/23
+
 ## 4.3.0 - 2024-04-11
 
 ### What's Changed
