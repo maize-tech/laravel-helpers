@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 4.3.0 - 2024-04-11
+
+### What's Changed
+
+* Laravel 11.x Compatibility by @enricodelazzari in https://github.com/maize-tech/laravel-helpers/pull/22
+
 ## 4.2.0 - 2023-12-04
 
 ### What's Changed
