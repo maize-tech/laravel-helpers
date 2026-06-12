@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-helpers` will be documented in this file.
 
+## 4.4.0 - 2026-06-12
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot[bot] in https://github.com/maize-tech/laravel-helpers/pull/24
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot[bot] in https://github.com/maize-tech/laravel-helpers/pull/25
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot[bot] in https://github.com/maize-tech/laravel-helpers/pull/26
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/maize-tech/laravel-helpers/pull/27
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/maize-tech/laravel-helpers/pull/32
+* Add Laravel 13 support, drop PHP 8.1 by @enricodelazzari in https://github.com/maize-tech/laravel-helpers/pull/36
+
+**Full Changelog**: https://github.com/maize-tech/laravel-helpers/compare/4.3.1...4.4.0
+
 ## 4.3.1 - 2024-04-11
 
 ### What's Changed
