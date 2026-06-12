@@ -24,7 +24,7 @@ it('anonymizeFilename', function (?string $name, ?string $ext) {
     $expect->toEndWith($ext);
     $this->assertNotEquals($expect, $filename);
 })->with([
-    ['filename' => '', 'ext' => ''],
+    ['name' => '', 'ext' => ''],
     ['name' => 'test', 'ext' => '.zip'],
     ['name' => 'test-test', 'ext' => '.jpg'],
 ]);
