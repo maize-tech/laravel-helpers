@@ -9,7 +9,7 @@ class PaginationLimit implements HelperMacro
     public function __invoke(): \Closure
     {
         return function (int $default = 16, int $max = 48): int {
-            $limit = request()->get('limit') ?? $default;
+            $limit = request()->input('limit') ?? $default;
 
             return min($limit, $max);
         };
